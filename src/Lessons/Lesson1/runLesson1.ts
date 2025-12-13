@@ -1,5 +1,5 @@
 import { checkAttrsAvailable } from "../../utils";
-import { lesson, type LessonRunner } from "../lesson2";
+import { lesson, type LessonRunner } from "../lesson";
 import fragShaderSource from "./shaders/point.frag";
 import vertShaderSource from "./shaders/point.vert";
 
