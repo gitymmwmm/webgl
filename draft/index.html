@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="fetch" href="./point.vert" id="vertex-shader" />
+    <link rel="preload" as="fetch" href="./point.frag" id="fragment-shader" />
+    <title>gl</title>
+    <style>
+      body {
+        border: 0;
+        overflow: hidden;
+        background-color: red;
+      }
+
+      * > * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./point.vert" type="application/x-vertex-shader"></script>
+    <script src="./point.frag" type="application/x-frag-shader"></script>
+    <script src="./gl.js"></script>
+  </body>
+</html>
