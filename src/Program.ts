@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { runLesson1 } from "./Lessons";
+import { lesson1 } from "./Lessons";
 
 class WebglProgram {
   private canvas: HTMLCanvasElement | null = null;
+  private lessonDispose: (() => void) | null = null;
 
   public listen = (canvas: HTMLCanvasElement | null) => {
     if (!canvas) {
@@ -38,11 +39,15 @@ class WebglProgram {
       throw new Error("Ваш браузер не поддерживает WebGL");
     }
 
-    runLesson1(gl);
+    this.lessonDispose = lesson1(gl);
   };
 
   private stop = () => {
     this.canvas = null;
+    if (this.lessonDispose) {
+      this.lessonDispose();
+      this.lessonDispose = null;
+    }
   };
 }
 

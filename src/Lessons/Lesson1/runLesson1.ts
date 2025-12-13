@@ -1,24 +1,9 @@
-import {
-  checkAttrsAvailable,
-  makeGLProgram,
-  makeShader,
-  normalizeCanvas,
-} from "../../utils";
+import { checkAttrsAvailable } from "../../utils";
+import { lesson, type LessonRunner } from "../Lesson";
 import fragShaderSource from "./shaders/point.frag";
 import vertShaderSource from "./shaders/point.vert";
 
-export const runLesson1 = (gl: WebGLRenderingContext) => {
-  console.log("Lesson1 started");
-
-  normalizeCanvas(gl);
-
-  const vertexShader = makeShader(gl, gl.VERTEX_SHADER, vertShaderSource);
-  const fragmentShader = makeShader(gl, gl.FRAGMENT_SHADER, fragShaderSource);
-
-  const program = makeGLProgram(gl, vertexShader, fragmentShader);
-
-  gl.useProgram(program);
-
+const runLesson1: LessonRunner = ({ gl, program }) => {
   // Инициализируем uniform-attributes
   const uFrag = gl.getUniformLocation(program, "u_FragColor");
   const aPosition = gl.getAttribLocation(program, "a_Position");
@@ -50,3 +35,10 @@ export const runLesson1 = (gl: WebGLRenderingContext) => {
 
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, vertices.length / coordsPickCount);
 };
+
+export const lesson1 = lesson({
+  title: "Урок 1: Точки",
+  fragShaderSource,
+  vertShaderSource,
+  runner: runLesson1,
+});
