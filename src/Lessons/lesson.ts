@@ -7,7 +7,7 @@ type LessonOptions = {
   runner: LessonRunner;
 };
 
-export type LessonRunner = (ctx: LessonContext) => void;
+export type LessonRunner = (ctx: LessonContext) => void | (() => void);
 
 type LessonContext = {
   gl: WebGLRenderingContext;
@@ -30,11 +30,12 @@ export const lesson = (opts: LessonOptions) => (gl: WebGLRenderingContext) => {
 
   gl.useProgram(program);
 
-  opts.runner({ gl, program });
+  const disposeRunner = opts.runner({ gl, program });
 
   return () => {
     gl.deleteProgram(program);
     gl.deleteShader(vertexShader);
     gl.deleteShader(fragmentShader);
+    disposeRunner?.();
   };
 };
