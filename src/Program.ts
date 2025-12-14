@@ -1,6 +1,6 @@
 import { useState } from "react";
 // @ts-expect-error Хочу такие импорты :)
-import { lesson1, lesson2 } from "./Lessons";
+import { Point, DynamicPoint, Triangle } from "./components";
 
 class WebglProgram {
   private canvas: HTMLCanvasElement | null = null;
@@ -40,8 +40,8 @@ class WebglProgram {
       throw new Error("Ваш браузер не поддерживает WebGL");
     }
 
-    this.lessonDispose = lesson1(gl);
-    // this.lessonDispose = lesson2(gl);
+    // this.lessonDispose = point(gl);
+    this.lessonDispose = DynamicPoint(gl);
   };
 
   private stop = () => {
