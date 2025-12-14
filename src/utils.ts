@@ -87,3 +87,37 @@ export function checkAttrsAvailable(...attrs: any[]) {
     }
   }
 }
+
+export const loop = (cb: () => void) => {
+  cb();
+
+  let rafId: number | null = null;
+
+  const internalLoop = () => {
+    cb();
+    rafId = requestAnimationFrame(internalLoop);
+  };
+
+  rafId = requestAnimationFrame(internalLoop);
+
+  return () => {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+    }
+  };
+};
+
+export const makeLoopSet = () => {
+  const loopDisposers = new Set<() => void>();
+
+  const loopWorker = (cb: () => void) => {
+    loopDisposers.add(loop(cb));
+  };
+
+  return {
+    loop: loopWorker,
+    dispose: () => {
+      loopDisposers.forEach((dispose) => dispose());
+    },
+  };
+};

@@ -18,9 +18,9 @@
   },
   "editor.formatOnSave": true,
   "[glsl]": {
-    "editor.formatOnSave": false,
-    "editor.formatOnPaste": false,
-    "editor.formatOnType": false
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true
   },
 
   "files.associations": {
