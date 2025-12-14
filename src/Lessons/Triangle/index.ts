@@ -1,6 +1,6 @@
 import { lesson, type LessonRunner } from "../../utils";
-import fragShaderSource from "./shaders/point.frag";
-import vertShaderSource from "./shaders/point.vert";
+import fragShaderSource from "./shader.frag";
+import vertShaderSource from "./shader.vert";
 
 const runner: LessonRunner = ({ gl, clear, rafLoop }) => {
   rafLoop(() => {
@@ -11,8 +11,8 @@ const runner: LessonRunner = ({ gl, clear, rafLoop }) => {
   });
 };
 
-export const lesson1 = lesson({
-  title: "Урок 1: Точки",
+export const lesson2 = lesson({
+  title: "Урок 2: Треугольники",
   fragShaderSource,
   vertShaderSource,
   runner,

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { lesson1 } from "./Lessons";
+// @ts-expect-error Хочу такие импорты :)
+import { lesson1, lesson2 } from "./Lessons";
 
 class WebglProgram {
   private canvas: HTMLCanvasElement | null = null;
@@ -40,6 +41,7 @@ class WebglProgram {
     }
 
     this.lessonDispose = lesson1(gl);
+    // this.lessonDispose = lesson2(gl);
   };
 
   private stop = () => {

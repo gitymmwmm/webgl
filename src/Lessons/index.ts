@@ -1,1 +1,2 @@
-export * from "./Lesson1";
+export * from "./Point";
+export * from "./Triangle";
