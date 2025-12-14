@@ -1,4 +1,4 @@
-import { lesson, type LessonRunner } from "../lesson";
+import { lesson, type LessonRunner } from "../../utils";
 import fragShaderSource from "./shaders/point.frag";
 import vertShaderSource from "./shaders/point.vert";
 

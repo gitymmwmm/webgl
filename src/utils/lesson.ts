@@ -3,7 +3,7 @@ import {
   makeLoopSet,
   makeShader,
   normalizeCanvas,
-} from "../utils";
+} from "./common";
 
 type LessonOptions = {
   title: string;
