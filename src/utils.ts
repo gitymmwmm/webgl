@@ -1,11 +1,4 @@
 export function normalizeCanvas(gl: WebGLRenderingContext) {
-  resize(gl);
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-  gl.clearColor(0, 0, 0, 1.0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
-}
-
-function resize(gl: WebGLRenderingContext) {
   const realToCSSPixels = window.devicePixelRatio;
 
   if (!(gl.canvas instanceof HTMLCanvasElement)) {
@@ -23,6 +16,11 @@ function resize(gl: WebGLRenderingContext) {
     gl.canvas.width = displayWidth;
     gl.canvas.height = displayHeight;
   }
+
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+  gl.clearColor(0, 0, 0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
 }
 
 export function makeGLProgram(

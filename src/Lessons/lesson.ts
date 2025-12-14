@@ -18,7 +18,7 @@ type LessonContext = {
   gl: WebGLRenderingContext;
   program: WebGLProgram;
   clear: (color: [number, number, number, number]) => void;
-  loop: (cb: () => void) => void;
+  rafLoop: (cb: () => void) => void;
 };
 
 export const lesson = (opts: LessonOptions) => (gl: WebGLRenderingContext) => {
@@ -46,7 +46,12 @@ export const lesson = (opts: LessonOptions) => (gl: WebGLRenderingContext) => {
 
   const loopSet = makeLoopSet();
 
-  const disposeRunner = opts.runner({ gl, program, clear, loop: loopSet.loop });
+  const disposeRunner = opts.runner({
+    gl,
+    program,
+    clear,
+    rafLoop: loopSet.loop,
+  });
 
   return () => {
     gl.deleteProgram(program);
