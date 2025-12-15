@@ -119,3 +119,24 @@ export const makeLoopSet = () => {
     },
   };
 };
+
+export const getRelativeMousePosition = (
+  event: MouseEvent,
+  canvas: HTMLCanvasElement
+) => {
+  const canvasRect = canvas.getBoundingClientRect();
+
+  const x = event.clientX - canvasRect.left;
+  const y = event.clientY - canvasRect.top;
+
+  const cw = canvasRect.width;
+  const ch = canvasRect.height;
+
+  const xi = x - cw / 2;
+  const yi = ch / 2 - y;
+
+  const normalizedX = xi / (cw / 2);
+  const normalizedY = yi / (ch / 2);
+
+  return { x: normalizedX, y: normalizedY };
+};
