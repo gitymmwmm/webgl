@@ -20,7 +20,7 @@ type ComponentContext = {
   render: (cb: () => void) => void;
 };
 
-export const Component =
+export const WebglProgram =
   (runner: Runner, opts: ComponentOptions) => (gl: WebGLRenderingContext) => {
     normalizeCanvas(gl);
 

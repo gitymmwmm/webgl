@@ -34,7 +34,7 @@ class WebglProgram {
 
     const canvas = this.canvas;
 
-    const gl = canvas.getContext("webgl");
+    const gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
 
     if (!gl) {
       throw new Error("Ваш браузер не поддерживает WebGL");

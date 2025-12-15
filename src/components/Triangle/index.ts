@@ -1,8 +1,8 @@
-import { Component } from "../../utils";
+import { WebglProgram } from "../../utils";
 import fragShaderSource from "./shader.frag";
 import vertShaderSource from "./shader.vert";
 
-export const Triangle = Component(
+export const Triangle = WebglProgram(
   ({ gl, clear, render }) => {
     render(() => {
       // Очистка экрана
