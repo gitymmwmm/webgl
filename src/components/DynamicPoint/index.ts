@@ -121,11 +121,11 @@ export const DynamicPoint = WebglProgram(
     render(() => {
       // Очистка экрана
       clear([0.0, 0.0, 0.0, 1.0]);
-      pos.forEach((current) => {
+      pos.forEach((point) => {
         // Устанавливаем позицию точки в центр экрана (записываем информацию в атрибут)
         // gl.vertexAttrib3f(aPos, x, y, 0.0);
         // Векторная версия - использует DataView ("типизированные массивы от ArrayBuffer")
-        gl.vertexAttrib2fv(aPos, new Float32Array(current));
+        gl.vertexAttrib2fv(aPos, new Float32Array(point));
         // Рисуем точку в центре экрана
         gl.drawArrays(gl.POINTS, 0, 1);
       });
