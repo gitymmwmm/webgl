@@ -5,14 +5,14 @@ import {
   normalizeCanvas,
 } from "./common";
 
-type ComponentOptions = {
+type ProgramOptions = {
   fragShaderSource: string;
   vertShaderSource: string;
 };
 
-export type Runner = (ctx: ComponentContext) => void | (() => void);
+export type Runner = (ctx: ProgramContext) => void | (() => void);
 
-type ComponentContext = {
+type ProgramContext = {
   gl: WebGLRenderingContext;
   canvas: HTMLCanvasElement | OffscreenCanvas;
   program: WebGLProgram;
@@ -21,7 +21,7 @@ type ComponentContext = {
 };
 
 export const WebglProgram =
-  (runner: Runner, opts: ComponentOptions) => (gl: WebGLRenderingContext) => {
+  (runner: Runner, opts: ProgramOptions) => (gl: WebGLRenderingContext) => {
     normalizeCanvas(gl);
 
     const vertexShader = makeShader(
